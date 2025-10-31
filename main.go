@@ -8,15 +8,16 @@ import (
 )
 
 func main() {
-	// Koneksi ke database
 	config.ConnectDatabase()
 
-	// Buat router
 	r := gin.Default()
 
-	// Route POST /bioskop
+	// ROUTES CRUD
 	r.POST("/bioskop", controllers.TambahBioskop)
+	r.GET("/bioskop", controllers.GetSemuaBioskop)
+	r.GET("/bioskop/:id", controllers.GetBioskopByID)
+	r.PUT("/bioskop/:id", controllers.UpdateBioskop)
+	r.DELETE("/bioskop/:id", controllers.HapusBioskop)
 
-	// Jalankan server
 	r.Run(":8080")
 }
