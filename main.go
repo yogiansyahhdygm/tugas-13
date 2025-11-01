@@ -1,6 +1,7 @@
 package main
 
 import (
+	"os"
 	"tugas13/config"
 	"tugas13/controllers"
 
@@ -22,5 +23,11 @@ func main() {
 		c.JSON(200, gin.H{"message": "Aplikasi Bioskop API Aktif"})
 	})
 
-	r.Run(":8080")
+	port := os.Getenv("PORT")
+	if port == "" {
+		port = "8080"
+	}
+
+	r.Run(":" + port)
+
 }
