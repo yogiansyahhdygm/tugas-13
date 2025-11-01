@@ -18,6 +18,9 @@ func main() {
 	r.GET("/bioskop/:id", controllers.GetBioskopByID)
 	r.PUT("/bioskop/:id", controllers.UpdateBioskop)
 	r.DELETE("/bioskop/:id", controllers.HapusBioskop)
+	r.GET("/", func(c *gin.Context) {
+		c.JSON(200, gin.H{"message": "Aplikasi Bioskop API Aktif"})
+	})
 
 	r.Run(":8080")
 }
